@@ -100,9 +100,14 @@ export const COURSES: Course[] = [
 export type Video = {
   title: string;
   category: string;
+  /** Short filter key used by the category buttons. */
+  filter: string;
   duration: string;
   desc: string;
-  embedId: string;
+  videoId: string;
+  youtubeUrl: string;
+  embedUrl: string;
+  thumbnail: string;
 };
 
 export const VIDEO_CATEGORIES = [
@@ -115,22 +120,57 @@ export const VIDEO_CATEGORIES = [
   "Farmer Digital Services",
 ] as const;
 
+/** Short filter buttons shown above the video grid. */
+export const VIDEO_FILTERS = [
+  { label: "All", value: "All" },
+  { label: "Computer", value: "Computer" },
+  { label: "Internet", value: "Internet" },
+  { label: "Payments", value: "Payments" },
+  { label: "Cyber Security", value: "Cyber Security" },
+  { label: "Banking", value: "Banking" },
+  { label: "Government", value: "Government" },
+  { label: "Farmers", value: "Farmers" },
+] as const;
+
+/** Build a video entry from a verified, publicly embeddable YouTube ID. */
+function video(
+  videoId: string,
+  title: string,
+  category: string,
+  filter: string,
+  duration: string,
+  desc: string,
+): Video {
+  return {
+    videoId,
+    title,
+    category,
+    filter,
+    duration,
+    desc,
+    youtubeUrl: `https://www.youtube.com/watch?v=${videoId}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1`,
+    thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+  };
+}
+
 export const VIDEOS: Video[] = [
-  { title: "What is a Computer?", category: "Computer Basics", duration: "08:12", desc: "Hardware, software and how a computer helps daily village work.", embedId: "placeholder1" },
-  { title: "Using Keyboard & Mouse", category: "Computer Basics", duration: "06:40", desc: "Typing practice, shortcuts and clicking with confidence.", embedId: "placeholder2" },
-  { title: "How the Internet Works", category: "Internet Basics", duration: "09:25", desc: "Data, networks and choosing a reliable connection.", embedId: "placeholder3" },
-  { title: "Searching the Web Safely", category: "Internet Basics", duration: "07:05", desc: "Good keywords, trusted sources and avoiding fake sites.", embedId: "placeholder4" },
-  { title: "Make Your First UPI Payment", category: "Digital Payments", duration: "05:50", desc: "Scan a QR code and pay a shopkeeper step by step.", embedId: "placeholder5" },
-  { title: "Wallets and Refunds", category: "Digital Payments", duration: "06:18", desc: "Add money, track history and raise a refund request.", embedId: "placeholder6" },
-  { title: "OTP Fraud Explained", category: "Cyber Security", duration: "10:02", desc: "Real village fraud cases and how to stay protected.", embedId: "placeholder7" },
-  { title: "Strong Passwords in 5 Minutes", category: "Cyber Security", duration: "05:11", desc: "Create and remember safe passwords without writing them down.", embedId: "placeholder8" },
-  { title: "Net Banking First Login", category: "Online Banking", duration: "08:44", desc: "Registration, login and checking your balance safely.", embedId: "placeholder9" },
-  { title: "Sending Money with IMPS", category: "Online Banking", duration: "07:30", desc: "Add a beneficiary and transfer money securely.", embedId: "placeholder10" },
-  { title: "DigiLocker Setup", category: "Government Services", duration: "06:55", desc: "Store Aadhaar, marksheets and RC book digitally.", embedId: "placeholder11" },
-  { title: "Applying on UMANG", category: "Government Services", duration: "09:10", desc: "Find and apply for services from a single app.", embedId: "placeholder12" },
-  { title: "PM-Kisan Status Check", category: "Farmer Digital Services", duration: "05:36", desc: "Check instalments, complete eKYC and fix errors.", embedId: "placeholder13" },
-  { title: "Daily Mandi Prices Online", category: "Farmer Digital Services", duration: "07:48", desc: "Compare crop prices before selling your harvest.", embedId: "placeholder14" },
+  video("mCq8-xTH7jA", "How Computers Work", "Computer Basics", "Computer", "10:00", "What makes a computer a computer — hardware, software and everyday uses."),
+  video("O5nskjZ_GoI", "Early Computing Explained", "Computer Basics", "Computer", "11:53", "A simple history of computing that helps first-time users understand machines."),
+  video("AEaKrq3SpW8", "How the Internet Works", "Internet Basics", "Internet", "11:56", "Data, networks and how a village connection reaches the whole world."),
+  video("3QhU9jd03a0", "Computer Networks Basics", "Internet Basics", "Internet", "12:19", "Wi-Fi, mobile data and how devices talk to each other."),
+  video("g-Mfbk4j0Y8", "UPI Safety Tips (Hindi)", "Digital Payments", "Payments", "01:30", "Official UPI Chalega safety tips before you send money."),
+  video("aB8j3CMBQYM", "UPI Scam Alert", "Digital Payments", "Payments", "01:44", "Common UPI payment scams and how to stay safe while paying."),
+  video("inWWhr5tnEA", "What is Cyber Security?", "Cyber Security", "Cyber Security", "07:00", "Cyber threats explained in seven minutes for everyday users."),
+  video("1xWPL0nBna4", "Cyber Safety & Security (NCERT)", "Cyber Security", "Cyber Security", "1:24:24", "Bilingual NCERT session on staying safe online, OTP fraud and privacy."),
+  video("fZq5mBPUYF0", "Download Policy Copy from Net Banking", "Online Banking", "Banking", "02:14", "A practical net-banking walkthrough for downloading documents from SBI."),
+  video("-JT8YonnD7I", "Understanding Bank Credit Messages", "Online Banking", "Banking", "02:03", "Why your bank sends a credit SMS and how to read your statement."),
+  video("e-6d98g64Yk", "India Post DIGIPIN System", "Government Services", "Government", "03:10", "The new digital PIN code system and how citizens can use it."),
+  video("NOGa905bRpg", "PM-Kisan New Registration", "Government Services", "Government", "05:25", "Step-by-step online registration for the PM-Kisan scheme."),
+  video("SeUCTDPMd2o", "PM-Kisan Beneficiary Status", "Farmer Digital Services", "Farmers", "04:20", "Check your instalment status online without visiting an agent."),
+  video("QtY-v_z8QmM", "PM-Kisan eKYC from Mobile", "Farmer Digital Services", "Farmers", "06:10", "Complete eKYC at home using the PM-Kisan mobile app."),
 ];
+
 
 export const FAQS = [
   { q: "Who can join the digital literacy programme?", a: "Any resident aged 12 and above can enrol. Courses are free for rural learners, self-help groups and students." },
