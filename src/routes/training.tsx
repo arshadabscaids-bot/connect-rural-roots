@@ -26,7 +26,7 @@ export const Route = createFileRoute("/training")({
       },
     ],
   }),
-  component: Training;
+  component: Training,
 });
 
 function Training() {
