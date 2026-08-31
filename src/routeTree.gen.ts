@@ -11,12 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CertificateRouteImport } from './routes/certificate'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as GovernmentServicesRouteImport } from './routes/government-services'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ObjectivesRouteImport } from './routes/objectives'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as VideoLearningRouteImport } from './routes/video-learning'
@@ -31,9 +35,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificateRoute = CertificateRouteImport.update({
+  id: '/certificate',
+  path: '/certificate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -44,6 +58,11 @@ const FaqRoute = FaqRouteImport.update({
 const FeaturesRoute = FeaturesRouteImport.update({
   id: '/features',
   path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernmentServicesRoute = GovernmentServicesRouteImport.update({
@@ -59,6 +78,11 @@ const LoginRoute = LoginRouteImport.update({
 const ObjectivesRoute = ObjectivesRouteImport.update({
   id: '/objectives',
   path: '/objectives',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -80,12 +104,16 @@ const VideoLearningRoute = VideoLearningRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/feedback': typeof FeedbackRoute
   '/government-services': typeof GovernmentServicesRoute
   '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
@@ -93,12 +121,16 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/feedback': typeof FeedbackRoute
   '/government-services': typeof GovernmentServicesRoute
   '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
@@ -107,12 +139,16 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/certificate': typeof CertificateRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/feedback': typeof FeedbackRoute
   '/government-services': typeof GovernmentServicesRoute
   '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/profile': typeof ProfileRoute
   '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
@@ -122,12 +158,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/certificate'
     | '/contact'
+    | '/dashboard'
     | '/faq'
     | '/features'
+    | '/feedback'
     | '/government-services'
     | '/login'
     | '/objectives'
+    | '/profile'
     | '/register'
     | '/training'
     | '/video-learning'
@@ -135,12 +175,16 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/certificate'
     | '/contact'
+    | '/dashboard'
     | '/faq'
     | '/features'
+    | '/feedback'
     | '/government-services'
     | '/login'
     | '/objectives'
+    | '/profile'
     | '/register'
     | '/training'
     | '/video-learning'
@@ -148,12 +192,16 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/certificate'
     | '/contact'
+    | '/dashboard'
     | '/faq'
     | '/features'
+    | '/feedback'
     | '/government-services'
     | '/login'
     | '/objectives'
+    | '/profile'
     | '/register'
     | '/training'
     | '/video-learning'
@@ -162,12 +210,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CertificateRoute: typeof CertificateRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
+  FeedbackRoute: typeof FeedbackRoute
   GovernmentServicesRoute: typeof GovernmentServicesRoute
   LoginRoute: typeof LoginRoute
   ObjectivesRoute: typeof ObjectivesRoute
+  ProfileRoute: typeof ProfileRoute
   RegisterRoute: typeof RegisterRoute
   TrainingRoute: typeof TrainingRoute
   VideoLearningRoute: typeof VideoLearningRoute
@@ -189,11 +241,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certificate': {
+      id: '/certificate'
+      path: '/certificate'
+      fullPath: '/certificate'
+      preLoaderRoute: typeof CertificateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -208,6 +274,13 @@ declare module '@tanstack/react-router' {
       path: '/features'
       fullPath: '/features'
       preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/government-services': {
@@ -229,6 +302,13 @@ declare module '@tanstack/react-router' {
       path: '/objectives'
       fullPath: '/objectives'
       preLoaderRoute: typeof ObjectivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -258,12 +338,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CertificateRoute: CertificateRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
+  FeedbackRoute: FeedbackRoute,
   GovernmentServicesRoute: GovernmentServicesRoute,
   LoginRoute: LoginRoute,
   ObjectivesRoute: ObjectivesRoute,
+  ProfileRoute: ProfileRoute,
   RegisterRoute: RegisterRoute,
   TrainingRoute: TrainingRoute,
   VideoLearningRoute: VideoLearningRoute,
