@@ -37,9 +37,18 @@ function FeedbackPage() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!course) return toast.error("Please choose a course.");
-    if (rating === 0) return toast.error("Please give a star rating.");
-    if (comment.trim().length < 10) return toast.error("Comment must be at least 10 characters.");
+    if (!course) {
+      toast.error("Please choose a course.");
+      return;
+    }
+    if (rating === 0) {
+      toast.error("Please give a star rating.");
+      return;
+    }
+    if (comment.trim().length < 10) {
+      toast.error("Comment must be at least 10 characters.");
+      return;
+    }
     toast.success("Thank you! Your feedback has been recorded.");
     setCourse("");
     setRating(0);

@@ -44,8 +44,14 @@ function ProfilePage() {
 
   const savePassword = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pwd.next.length < 6) return toast.error("New password must be at least 6 characters.");
-    if (pwd.next !== pwd.confirm) return toast.error("Passwords do not match.");
+    if (pwd.next.length < 6) {
+      toast.error("New password must be at least 6 characters.");
+      return;
+    }
+    if (pwd.next !== pwd.confirm) {
+      toast.error("Passwords do not match.");
+      return;
+    }
     toast.success("Password changed successfully.");
     setPwd({ current: "", next: "", confirm: "" });
   };
