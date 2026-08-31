@@ -48,7 +48,7 @@ function Home() {
     return () => clearInterval(t);
   }, []);
 
-  const t = TESTIMONIALS[slide];
+  const t = TESTIMONIALS[slide] ?? TESTIMONIALS[0]!;
 
   return (
     <div>
