@@ -30,11 +30,11 @@ function ContactPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (form.name.trim().length < 3) e.name = "Enter your name.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Enter a valid email.";
-    if (!/^[6-9]\d{9}$/.test(form.phone.trim())) e.phone = "Enter a valid 10-digit mobile number.";
-    if (form.subject.trim().length < 3) e.subject = "Subject is too short.";
-    if (form.message.trim().length < 10) e.message = "Message must be at least 10 characters.";
+    if (form.name.trim().length < 3) e["name"] = "Enter your name.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e["email"] = "Enter a valid email.";
+    if (!/^[6-9]\d{9}$/.test(form.phone.trim())) e["phone"] = "Enter a valid 10-digit mobile number.";
+    if (form.subject.trim().length < 3) e["subject"] = "Subject is too short.";
+    if (form.message.trim().length < 10) e["message"] = "Message must be at least 10 characters.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -76,7 +76,7 @@ function ContactPage() {
               <div>
                 <Label htmlFor="message">Message</Label>
                 <Textarea id="message" rows={5} className="mt-1.5" placeholder="How can we help?" value={form.message} onChange={set("message")} />
-                {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+                {errors["message"] && <p className="mt-1 text-xs text-destructive">{errors["message"]}</p>}
               </div>
               <Button type="submit" className="w-full">
                 <Send className="mr-1 size-4" /> Send message

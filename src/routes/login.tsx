@@ -29,9 +29,9 @@ function LoginPage() {
   /** Client-side validation for every field. */
   const validate = () => {
     const e: Record<string, string> = {};
-    if (form.username.trim().length < 3) e.username = "Username must be at least 3 characters.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Enter a valid email address.";
-    if (form.password.length < 6) e.password = "Password must be at least 6 characters.";
+    if (form.username.trim().length < 3) e["username"] = "Username must be at least 3 characters.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e["email"] = "Enter a valid email address.";
+    if (form.password.length < 6) e["password"] = "Password must be at least 6 characters.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -60,12 +60,12 @@ function LoginPage() {
               <div>
                 <Label htmlFor="username">Username</Label>
                 <Input id="username" className="mt-1.5" placeholder="ramesh_naidu" {...field("username")} />
-                {errors.username && <p className="mt-1 text-xs text-destructive">{errors.username}</p>}
+                {errors["username"] && <p className="mt-1 text-xs text-destructive">{errors["username"]}</p>}
               </div>
               <div>
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" className="mt-1.5" placeholder="you@example.com" {...field("email")} />
-                {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+                {errors["email"] && <p className="mt-1 text-xs text-destructive">{errors["email"]}</p>}
               </div>
               <div>
                 <Label htmlFor="password">Password</Label>
@@ -80,7 +80,7 @@ function LoginPage() {
                     {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                   </button>
                 </div>
-                {errors.password && <p className="mt-1 text-xs text-destructive">{errors.password}</p>}
+                {errors["password"] && <p className="mt-1 text-xs text-destructive">{errors["password"]}</p>}
               </div>
 
               <div className="flex items-center justify-between">

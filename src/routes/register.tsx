@@ -40,15 +40,15 @@ function RegisterPage() {
   /** JavaScript validation for all registration fields. */
   const validate = () => {
     const e: Record<string, string> = {};
-    if (form.fullName.trim().length < 3) e.fullName = "Enter your full name.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Enter a valid email address.";
-    if (!/^[6-9]\d{9}$/.test(form.mobile.trim())) e.mobile = "Enter a valid 10-digit Indian mobile number.";
-    if (form.address.trim().length < 5) e.address = "Address is too short.";
-    if (!form.village.trim()) e.village = "Village is required.";
-    if (!form.district.trim()) e.district = "District is required.";
-    if (!form.state.trim()) e.state = "State is required.";
-    if (form.password.length < 6) e.password = "Password must be at least 6 characters.";
-    if (form.password !== form.confirm) e.confirm = "Passwords do not match.";
+    if (form.fullName.trim().length < 3) e["fullName"] = "Enter your full name.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e["email"] = "Enter a valid email address.";
+    if (!/^[6-9]\d{9}$/.test(form.mobile.trim())) e["mobile"] = "Enter a valid 10-digit Indian mobile number.";
+    if (form.address.trim().length < 5) e["address"] = "Address is too short.";
+    if (!form.village.trim()) e["village"] = "Village is required.";
+    if (!form.district.trim()) e["district"] = "District is required.";
+    if (!form.state.trim()) e["state"] = "State is required.";
+    if (form.password.length < 6) e["password"] = "Password must be at least 6 characters.";
+    if (form.password !== form.confirm) e["confirm"] = "Passwords do not match.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -88,7 +88,7 @@ function RegisterPage() {
               <div className="sm:col-span-2">
                 <Label htmlFor="address">Address</Label>
                 <Textarea id="address" className="mt-1.5" placeholder="House number, street, landmark" value={form.address} onChange={set("address")} />
-                {errors.address && <p className="mt-1 text-xs text-destructive">{errors.address}</p>}
+                {errors["address"] && <p className="mt-1 text-xs text-destructive">{errors["address"]}</p>}
               </div>
               {text("district", "District", "Anantapur")}
               {text("state", "State", "Andhra Pradesh")}
