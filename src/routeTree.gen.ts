@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as GovernmentServicesRouteImport } from './routes/government-services'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ObjectivesRouteImport } from './routes/objectives'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as VideoLearningRouteImport } from './routes/video-learning'
 
@@ -27,6 +31,16 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesRoute = FeaturesRouteImport.update({
   id: '/features',
   path: '/features',
@@ -37,9 +51,19 @@ const GovernmentServicesRoute = GovernmentServicesRouteImport.update({
   path: '/government-services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObjectivesRoute = ObjectivesRouteImport.update({
   id: '/objectives',
   path: '/objectives',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainingRoute = TrainingRouteImport.update({
@@ -56,18 +80,26 @@ const VideoLearningRoute = VideoLearningRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/government-services': typeof GovernmentServicesRoute
+  '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/government-services': typeof GovernmentServicesRoute
+  '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
 }
@@ -75,9 +107,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/government-services': typeof GovernmentServicesRoute
+  '/login': typeof LoginRoute
   '/objectives': typeof ObjectivesRoute
+  '/register': typeof RegisterRoute
   '/training': typeof TrainingRoute
   '/video-learning': typeof VideoLearningRoute
 }
@@ -86,27 +122,39 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/features'
     | '/government-services'
+    | '/login'
     | '/objectives'
+    | '/register'
     | '/training'
     | '/video-learning'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/features'
     | '/government-services'
+    | '/login'
     | '/objectives'
+    | '/register'
     | '/training'
     | '/video-learning'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
+    | '/faq'
     | '/features'
     | '/government-services'
+    | '/login'
     | '/objectives'
+    | '/register'
     | '/training'
     | '/video-learning'
   fileRoutesById: FileRoutesById
@@ -114,9 +162,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
   GovernmentServicesRoute: typeof GovernmentServicesRoute
+  LoginRoute: typeof LoginRoute
   ObjectivesRoute: typeof ObjectivesRoute
+  RegisterRoute: typeof RegisterRoute
   TrainingRoute: typeof TrainingRoute
   VideoLearningRoute: typeof VideoLearningRoute
 }
@@ -137,6 +189,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features': {
       id: '/features'
       path: '/features'
@@ -151,11 +217,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernmentServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/objectives': {
       id: '/objectives'
       path: '/objectives'
       fullPath: '/objectives'
       preLoaderRoute: typeof ObjectivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/training': {
@@ -178,9 +258,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
   GovernmentServicesRoute: GovernmentServicesRoute,
+  LoginRoute: LoginRoute,
   ObjectivesRoute: ObjectivesRoute,
+  RegisterRoute: RegisterRoute,
   TrainingRoute: TrainingRoute,
   VideoLearningRoute: VideoLearningRoute,
 }
