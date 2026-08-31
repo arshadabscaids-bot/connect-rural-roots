@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as GovernmentServicesRouteImport } from './routes/government-services'
 import { Route as ObjectivesRouteImport } from './routes/objectives'
+import { Route as TrainingRouteImport } from './routes/training'
+import { Route as VideoLearningRouteImport } from './routes/video-learning'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +32,24 @@ const FeaturesRoute = FeaturesRouteImport.update({
   path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernmentServicesRoute = GovernmentServicesRouteImport.update({
+  id: '/government-services',
+  path: '/government-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObjectivesRoute = ObjectivesRouteImport.update({
   id: '/objectives',
   path: '/objectives',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoLearningRoute = VideoLearningRouteImport.update({
+  id: '/video-learning',
+  path: '/video-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,34 +57,68 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/government-services': typeof GovernmentServicesRoute
   '/objectives': typeof ObjectivesRoute
+  '/training': typeof TrainingRoute
+  '/video-learning': typeof VideoLearningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/government-services': typeof GovernmentServicesRoute
   '/objectives': typeof ObjectivesRoute
+  '/training': typeof TrainingRoute
+  '/video-learning': typeof VideoLearningRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/features': typeof FeaturesRoute
+  '/government-services': typeof GovernmentServicesRoute
   '/objectives': typeof ObjectivesRoute
+  '/training': typeof TrainingRoute
+  '/video-learning': typeof VideoLearningRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/features' | '/objectives'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/features'
+    | '/government-services'
+    | '/objectives'
+    | '/training'
+    | '/video-learning'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/features' | '/objectives'
-  id: '__root__' | '/' | '/about' | '/features' | '/objectives'
+  to:
+    | '/'
+    | '/about'
+    | '/features'
+    | '/government-services'
+    | '/objectives'
+    | '/training'
+    | '/video-learning'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/features'
+    | '/government-services'
+    | '/objectives'
+    | '/training'
+    | '/video-learning'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   FeaturesRoute: typeof FeaturesRoute
+  GovernmentServicesRoute: typeof GovernmentServicesRoute
   ObjectivesRoute: typeof ObjectivesRoute
+  TrainingRoute: typeof TrainingRoute
+  VideoLearningRoute: typeof VideoLearningRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +144,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/government-services': {
+      id: '/government-services'
+      path: '/government-services'
+      fullPath: '/government-services'
+      preLoaderRoute: typeof GovernmentServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/objectives': {
       id: '/objectives'
       path: '/objectives'
       fullPath: '/objectives'
       preLoaderRoute: typeof ObjectivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video-learning': {
+      id: '/video-learning'
+      path: '/video-learning'
+      fullPath: '/video-learning'
+      preLoaderRoute: typeof VideoLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   FeaturesRoute: FeaturesRoute,
+  GovernmentServicesRoute: GovernmentServicesRoute,
   ObjectivesRoute: ObjectivesRoute,
+  TrainingRoute: TrainingRoute,
+  VideoLearningRoute: VideoLearningRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
